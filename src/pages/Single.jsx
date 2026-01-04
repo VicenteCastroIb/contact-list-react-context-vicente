@@ -6,17 +6,15 @@ import useGlobalReducer from "../hooks/useGlobalReducer";  // Import a custom ho
 
 // Define and export the Single component which displays individual item details.
 export const Single = props => {
-  // Access the global state using the custom hook.
   const { store } = useGlobalReducer()
-
-  // Retrieve the 'theId' URL parameter using useParams hook.
   const { theId } = useParams()
-  const singleTodo = store.todos.find(todo => todo.id === parseInt(theId));
+  
+  // Cambiar store.todos por store.contacts
+  const singleContact = store.contacts.find(contact => contact.id === parseInt(theId));
 
-  return (
+ return (
     <div className="container text-center">
-      {/* Display the title of the todo element dynamically retrieved from the store using theId. */}
-      <h1 className="display-4">Todo: {singleTodo?.title}</h1>
+      <h1 className="display-4">Contact: {singleContact?.name}</h1>
       <hr className="my-4" />  {/* A horizontal rule for visual separation. */}
 
       {/* A Link component acts as an anchor tag but is used for client-side routing to prevent page reloads. */}
